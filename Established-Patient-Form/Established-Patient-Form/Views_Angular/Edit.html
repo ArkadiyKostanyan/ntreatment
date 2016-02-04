@@ -1,0 +1,742 @@
+﻿<style>
+    .col-md-7{
+        min-height:20px;
+    }
+    .buttondemoBasicUsage section {
+        background: #f7f7f7;
+        border-radius: 3px;
+        text-align: center;
+        margin: 1em;
+        position: relative !important;
+        padding-bottom: 10px;
+    }
+
+    .buttondemoBasicUsage md-content {
+        margin-right: 7px;
+    }
+
+    .buttondemoBasicUsage section .md-button {
+        margin-top: 16px;
+        margin-bottom: 16px;
+    }
+
+    .buttondemoBasicUsage .label {
+        position: absolute;
+        bottom: 5px;
+        left: 7px;
+        font-size: 14px;
+        opacity: 0.54;
+    }
+</style>
+<div layout-sm="rows" data-ng-init="getTemplate()">
+    <section layout="row" layout-sm="column" flex="100" layout-align="center center" layout-wrap ng-hide="isPreview">
+        <md-button class="md-raised md-warn" data-ng-click="saveTemplate()" ng-disabled="templateForm.$invalid">Save</md-button>
+        <md-button class="md-raised md-primary" data-ng-click="getTemplate()">Restore All</md-button>
+    </section>
+
+    <form name="templateForm">
+
+        <div layout="row" layout-wrap flex class="border border-top">
+            <div flex="100" class="gray border-bottom" layout="row" layout-align="center">
+                <b>HISTORY</b>
+            </div>
+            <div layout="column" layout-wrap layout-padding flex>
+                <div flex>
+                    <md-input-container data-ng-disabled="isPreview"  class="md-block">
+                        <label><b>CHIEF COMPLAINT/REASON FOR ENCOUNTER:</b></label>
+                        <textarea data-ng-disabled="isPreview" ng-model="model.chief_Complaint" name="chief_Complaint" md-maxlength="500" rows="5" ></textarea>
+                        <div ng-messages="templateForm.chief_Complaint.$error">
+                            <div ng-message="md-maxlength">CHIEF COMPLAINT/REASON FOR ENCOUNTER has to be less than 500 characters long.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div flex>
+                    <md-input-container class="md-block" data-ng-disabled="isPreview">
+                        <label><b>HPI</b>(1-3 elements - Breif; 4+ elements - Extended)</label>
+                        <textarea ng-model="model.hpi" md-maxlength="500" name="hpi" rows="5" data-ng-readonly="isPreview"></textarea>
+                        <div ng-messages="templateForm.hpi.$error">
+                            <div ng-message="md-maxlength">HPI has to be less than 500 characters long.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <div flex>
+                    <md-input-container class="md-block" data-ng-disabled="isPreview">
+                        <label><b>PAST, FAMILY, SOCIAL HISTORY (PFSH)</b>Check if no change (1 history area – Pertinent; 2-3 history areas – Complete)</label>
+                        <textarea ng-model="model.pfsh" md-maxlength="500" name="pfsh" rows="5" data-ng-readonly="isPreview"></textarea>
+                        <div ng-messages="templateForm.pfsh.$error">
+                            <div ng-message="md-maxlength">PAST, FAMILY, SOCIAL HISTORY (PFSH) has to be less than 500 characters long.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+        </div>
+        <div layout="row" layout-wrap flex class="border">
+            <div flex="100" layout="row">
+                <div flex="50" layout="row" layout-align="center"><b>REVIEW OF SYSTEMS & ACTIVE MEDICAL PROBLEMS</b></div>
+                <div flex="50" layout="row" layout-align="center"><b>NOTES IF POSITIVE</b></div>
+            </div>
+            <div flex="100" layout="row" layout-align="center border-bottom">
+                (1 system - Problem Pertinent; 2-9 systems – Extended; 10 or more systems or some systems noted as ”all others negative”- Complete)
+            </div>
+            <div layout-wrap flex="100" layout-padding>
+                <div layout="row">
+                        <md-switch flex="25" class="md-primary" ng-model="model.constitutional.isPositive" aria-label="Constitutional" data-ng-disabled="isPreview">
+                            1. Constitutional
+                        </md-switch>
+                        <md-input-container class="md-block" data-ng-disabled="isPreview" flex="75" layout="row" layout-align="left center" >
+                            <label>Notes</label>
+                            <textarea ng-model="model.constitutional.notes" md-maxlength="200" rows="5" data-ng-readonly="isPreview"></textarea>
+                            <div ng-messages="model.constitutional.$error">
+                                <div ng-message="md-maxlength">Notes has to be less than 200 characters long.</div>
+                            </div>
+                        </md-input-container>
+                    
+                </div>
+                <div layout="row">
+                        <md-switch flex="25" class="md-primary" ng-model="model.eyes.isPositive" aria-label="Constitutional" data-ng-disabled="isPreview">
+                            2. Eyes
+                        </md-switch>
+                        <md-input-container class="md-block" data-ng-readonly="isPreview" flex="75" layout="row" layout-align="left center">
+                            <label>Notes</label>
+                            <textarea ng-model="model.eyes.notes" md-maxlength="200" rows="5" data-ng-readonly="isPreview"></textarea>
+                            <div ng-messages="model.eyes.notes.$error">
+                                <div ng-message="md-maxlength">Notes has to be less than 200 characters long.</div>
+                            </div>
+                        </md-input-container>
+                </div>
+                <div layout="row">
+                        <md-switch flex="25" class="md-primary" ng-model="model.throat.isPositive" aria-label="Constitutional" data-ng-disabled="isPreview">
+                            3. Ears/Nose/Mouth/Throat
+                        </md-switch>
+
+                        <md-input-container class="md-block" data-ng-disabled="isPreview" flex="75" layout="row" layout-align="left center">
+                            <label>Notes</label>
+                            <textarea ng-model="model.throat.notes" md-maxlength="200" rows="5" data-ng-readonly="isPreview"></textarea>
+                            <div ng-messages="model.throat.notes.$error">
+                                <div ng-message="md-maxlength">Notes has to be less than 200 characters long.</div>
+                            </div>
+                        </md-input-container>
+                    
+                </div>
+                <div layout="row">
+                        <md-switch flex="25" class="md-primary" ng-model="model.cardiovascular.isPositive" aria-label="Constitutional" data-ng-disabled="isPreview">
+                            4. Cardiovascular
+                        </md-switch>
+                        <md-input-container class="md-block" data-ng-disabled="isPreview" flex="75" layout="row" layout-align="left center">
+                            <label>Notes</label>
+                            <textarea ng-model="model.cardiovascular.notes" md-maxlength="200" rows="5" data-ng-readonly="isPreview"></textarea>
+                            <div ng-messages="model.cardiovascular.notes.$error">
+                                <div ng-message="md-maxlength">Notes has to be less than 200 characters long.</div>
+                            </div>
+                        </md-input-container>
+                </div>
+                <div layout="row">
+                        <md-switch flex="25" class="md-primary" ng-model="model.respiratory.isPositive" aria-label="Constitutional" data-ng-disabled="isPreview">
+                            5. Respiratory
+                        </md-switch>
+                        <md-input-container class="md-block" flex="75" layout="row" layout-align="left center">
+                            <label>Notes</label>
+                            <textarea ng-model="model.respiratory.notes" md-maxlength="200" rows="5" data-ng-readonly="isPreview"></textarea>
+                            <div ng-messages="model.respiratory.notes.$error">
+                                <div ng-message="md-maxlength">Notes has to be less than 200 characters long.</div>
+                            </div>
+                        </md-input-container>
+                    
+                </div>
+                <div layout="row">
+
+                        <md-switch flex="25" class="md-primary" ng-model="model.gastrointestinal.isPositive" aria-label="Constitutional" data-ng-disabled="isPreview">
+                            6. Gastrointestinal
+                        </md-switch>
+
+                        <md-input-container class="md-block" flex="75" layout="row" layout-align="left center">
+                            <label>Notes</label>
+                            <textarea ng-model="model.gastrointestinal.notes" md-maxlength="200" rows="5" data-ng-readonly="isPreview"></textarea>
+                            <div ng-messages="model.gastrointestinal.notes.$error">
+                                <div ng-message="md-maxlength">Notes has to be less than 200 characters long.</div>
+                            </div>
+                        </md-input-container>
+                   
+                </div>
+                <div layout="row" >
+                    
+                        <md-switch flex="25" class="md-primary" ng-model="model.genitourinary.isPositive" aria-label="Constitutional" data-ng-disabled="isPreview">
+                            7. Genitourinary
+                        </md-switch>
+
+                        <md-input-container class="md-block" flex="75" layout="row" layout-align="left center">
+                            <label>Notes</label>
+                            <textarea ng-model="model.genitourinary.notes" md-maxlength="200" rows="5" data-ng-readonly="isPreview"></textarea>
+                            <div ng-messages="model.genitourinary.notes.$error">
+                                <div ng-message="md-maxlength">Notes has to be less than 200 characters long.</div>
+                            </div>
+                        </md-input-container>
+
+                </div>
+                <div layout="row" >
+                        <md-switch class="md-primary" flex="25" ng-model="model.muscular.isPositive" aria-label="Constitutional" data-ng-disabled="isPreview">
+                            8. Muscular
+                        </md-switch>
+                        <md-input-container class="md-block" flex="75" layout="row" layout-align="left center">
+                            <label>Notes</label>
+                            <textarea ng-model="model.muscular.notes" md-maxlength="200" rows="5" data-ng-readonly="isPreview"></textarea>
+                            <div ng-messages="model.muscular.notes.$error">
+                                <div ng-message="md-maxlength">Notes has to be less than 200 characters long.</div>
+                            </div>
+                        </md-input-container>
+                    
+                </div>
+                <div layout="row" >
+                        <md-switch class="md-primary" flex="25" ng-model="model.integumentary.isPositive" aria-label="Constitutional" data-ng-disabled="isPreview">
+                            9. Integumentary
+                        </md-switch>
+                        <md-input-container class="md-block" flex="75" layout="row" layout-align="left center">
+                            <label>Notes</label>
+                            <textarea ng-model="model.integumentary.notes" md-maxlength="200" rows="5" data-ng-readonly="isPreview"></textarea>
+                            <div ng-messages="model.integumentary.notes.$error">
+                                <div ng-message="md-maxlength">Notes has to be less than 200 characters long.</div>
+                            </div>
+                        </md-input-container>
+                    
+                </div>
+                <div layout="row">
+                    
+                        <md-switch flex="25" class="md-primary" ng-model="model.neurological.isPositive" aria-label="Constitutional" data-ng-disabled="isPreview">
+                            10. Neurological
+                        </md-switch>
+                    
+                        <md-input-container class="md-block" flex="75" layout="row" layout-align="left center">
+                            <label>Notes</label>
+                            <textarea ng-model="model.neurological.notes" md-maxlength="200" rows="5" data-ng-readonly="isPreview"></textarea>
+                            <div ng-messages="model.neurological.notes.$error">
+                                <div ng-message="md-maxlength">Notes has to be less than 200 characters long.</div>
+                            </div>
+                        </md-input-container>
+                    
+                </div>
+                <div layout="row">
+                        <md-switch flex="25" class="md-primary" ng-model="model.endocrine.isPositive" aria-label="Constitutional" data-ng-disabled="isPreview">
+                            11. Endocrine
+                        </md-switch>                    
+                        <md-input-container class="md-block" flex="75" layout="row" layout-align="left center">
+                            <label>Notes</label>
+                            <textarea ng-model="model.endocrine.notes" md-maxlength="200" rows="5" data-ng-readonly="isPreview"></textarea>
+                            <div ng-messages="model.endocrine.notes.$error">
+                                <div ng-message="md-maxlength">Notes has to be less than 200 characters long.</div>
+                            </div>
+                        </md-input-container>
+                </div>
+                <div layout="row">
+                        <md-switch class="md-primary" flex="25" ng-model="model.hemotologic.isPositive" aria-label="Constitutional" data-ng-disabled="isPreview">
+                            12. Hemotologic/Lymphatic
+                        </md-switch>
+                        <md-input-container class="md-block" flex="75" layout="row" layout-align="left center">
+                            <label>Notes</label>
+                            <textarea ng-model="model.hemotologic.notes" md-maxlength="200" rows="5" data-ng-readonly="isPreview"></textarea>
+                            <div ng-messages="model.hemotologic.notes.$error">
+                                <div ng-message="md-maxlength">Notes has to be less than 200 characters long.</div>
+                            </div>
+                        </md-input-container>
+                </div>
+                <div layout="row">
+                        <md-switch class="md-primary" flex="25" ng-model="model.allergies.isPositive" aria-label="Constitutional" data-ng-disabled="isPreview">
+                            13. Allergies/Immune
+                        </md-switch>
+
+                        <md-input-container class="md-block" flex="75" layout="row" layout-align="left center">
+                            <label>Notes</label>
+                            <textarea ng-model="model.allergies.notes" md-maxlength="200" rows="5" data-ng-readonly="isPreview"></textarea>
+                            <div ng-messages="model.allergies.notes.$error">
+                                <div ng-message="md-maxlength">Notes has to be less than 200 characters long.</div>
+                            </div>
+                        </md-input-container>
+                </div>
+            </div>
+        </div>
+        <div layout="row" layout-wrap flex class="border">
+            <div flex="100" class="gray border-bottom" layout="row" layout-align="center">
+                <b>PSYCHIATRIC SPECIALTY EXAMINATION</b>
+            </div>
+            <div flex="100" layout="row" class="border-bottom" layout-align="center">
+                (1-5 bullets- Problem Focused; at least 6 bullets Expanded Problem Focused; at least 9 bullets - Detailed; all bullets- Comprehensive Exam)
+            </div>
+            <div flex="100" layout="row" layout-align="center">
+                <md-switch class="md-primary" ng-model="model.isExamined" aria-label="Constitutional" data-ng-disabled="isPreview">
+                    Patient personally examined
+                </md-switch>
+            </div>
+
+            <md-content>
+                <md-list>
+                    <md-list-item>
+                        <div class="md-list-item-text" flex layout="column">
+                            <h4>Vital Signs (any 3 or more of the 7 listed):</h4>
+                            <div layout="row" flex="100">
+
+                                <div flex="15" layout="row" layout-align="left center">
+                                    Blood Pressure:
+                                </div>
+                                <div flex="20" layout="row" layout-align="center center">
+                                    <md-input-container class="md-block" data-ng-readonly="isPreview">
+                                        <label>Sitting</label>
+                                        <input ng-model="model.blood_Pressure_Sitting" name="blood_Pressure_Sitting" type="number" min="10" data-ng-readonly="isPreview" />
+                                        <div ng-messages="templateForm.blood_Pressure_Sitting.$error" multiple>
+                                            <div ng-message="min">Sitting blood pressure has to be bigger than 10 characters long.</div>
+                                        </div>
+                                    </md-input-container>
+                                    /
+                                    <md-input-container class="md-block" data-ng-readonly="isPreview">
+                                        <label>Standing</label>
+                                        <input ng-model="model.blood_Pressure_Standing" name="blood_Pressure_Standing" type="number" min="10" data-ng-readonly="isPreview" />
+                                        <div ng-messages="templateForm.blood_Pressure_Standing.$error">
+                                            <div ng-message="md-maxlength">Standing blood pressure has to be bigger than 10 characters long.</div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+
+                                <div flex="5" layout="row" layout-align="left center">
+                                    Pulse
+                                </div>
+                                <div flex="20" layout="row" layout-align="center center">
+                                    <md-input-container class="md-block" data-ng-readonly="isPreview">
+                                        <label>Rate</label>
+                                        <input ng-model="model.pulse_Rate" name="pulse_Rate" type="number" min="10" data-ng-readonly="isPreview" />
+                                        <div ng-messages="templateForm.pulse_Rate.$error">
+                                            <div ng-message="min">Rate has to be bigger than 10 characters long.</div>
+                                        </div>
+                                    </md-input-container>
+                                    /
+                                    <md-input-container class="md-block" data-ng-readonly="isPreview">
+                                        <label>Regularity</label>
+                                        <input ng-model="model.pulse_Regularity" name="pulse_Regularity" type="number" min="10" data-ng-readonly="isPreview" />
+                                        <div ng-messages="templateForm.pulse_Regularity.$error">
+                                            <div ng-message="min">Regularity has to be bigger than 10 characters long.</div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+
+                                <div flex="20" layout="row" layout-align="center center">
+                                    <md-input-container class="md-block" data-ng-readonly="isPreview">
+                                        <label>Supine</label>
+                                        <input ng-model="model.supine" type="number" name="supine" min="10" data-ng-readonly="isPreview" />
+                                        <div ng-messages="templateForm.supine.$error">
+                                            <div ng-message="min">Supine has to be bigger than 10 characters long.</div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+                                <div flex="20" layout="row" layout-align="center center">
+                                    <md-input-container class="md-block" data-ng-readonly="isPreview">
+                                        <label>Temp</label>
+                                        <input ng-model="model.temp" type="number" name="temp" min="1" data-ng-readonly="isPreview" />
+                                        <div ng-messages="templateForm.temp.$error">
+                                            <div ng-message="min">Temp has to be bigger than 1 characters long.</div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+
+
+                                <div flex="20" layout="row" layout-align="center center">
+                                    <md-input-container class="md-block" data-ng-readonly="isPreview">
+                                        <label>Respiration</label>
+                                        <input ng-model="model.respiration" type="number" name="respiration" min="1" data-ng-readonly="isPreview" />
+                                        <div ng-messages="templateForm.respiration.$error">
+                                            <div ng-message="min">Respiratione has to be bigger than 1 characters long.</div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+                                <div flex="20" layout="row" layout-align="center center">
+                                    <md-input-container class="md-block" data-ng-readonly="isPreview">
+                                        <label>Height</label>
+                                        <input ng-model="model.height" type="number" name="height" min="1" data-ng-readonly="isPreview" />
+                                        <div ng-messages="templateForm.height.$error">
+                                            <div ng-message="md-maxlength">Height has to be bigger than 1 characters long.</div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+                                <div flex="20" layout="row" layout-align="center center">
+                                    <md-input-container class="md-block" data-ng-readonly="isPreview">
+                                        <label>Weight</label>
+                                        <input ng-model="model.weight" type="number" name="weight" min="1" data-ng-readonly="isPreview" />
+                                        <div ng-messages="templateForm.weight.$error">
+                                            <div ng-message="md-maxlength">Weight has to be bigger than 1 characters long.</div>
+                                        </div>
+                                    </md-input-container>
+                                </div>
+
+                            </div>
+                        </div>
+                    </md-list-item>
+
+                    <md-divider></md-divider>
+                    <md-list-item>
+                        <div class="md-list-item-text" flex layout="column">
+                            <h4>General Appearance and Manner:</h4>
+                            <md-input-container class="md-block">
+                                <label>Development, nutrition, body habitus, deformities, attention to grooming etc.</label>
+                                <textarea ng-model="model.general_Appearance" name="general_Appearance" md-maxlength="500" rows="5" data-ng-readonly="isPreview"></textarea>
+                                <div ng-messages="templateForm.general_Appearance.$error">
+                                    <div ng-message="md-maxlength">General Appearance and Manner has to be less than 500v characters long.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </md-list-item>
+
+                    <md-divider></md-divider>
+                    <md-list-item>
+                        <div class="md-list-item-text" flex layout="column">
+                            <h4>Musculoskeletal:</h4>
+                            <md-switch class="md-primary" ng-model="model.assessment" aria-label="Constitutional" data-ng-disabled="isPreview">
+                                Assessment of muscle strength and tone (e.g., flaccid, cog wheel, spastic) (note any atrophy or abnormal movements)
+                            </md-switch>
+                            <md-switch class="md-primary" ng-model="model.examination_Of_Gait" aria-label="Constitutional" data-ng-disabled="isPreview">
+                                Examination of gait and station
+                            </md-switch>
+                            <md-input-container class="md-block">
+                                <label>Description</label>
+                                <textarea ng-model="model.musculoskeletal" name="musculoskeletal" md-maxlength="500" rows="5" data-ng-readonly="isPreview"></textarea>
+                                <div ng-messages="templateForm.musculoskeletal.$error">
+                                    <div ng-message="md-maxlength">Musculoskeletalr has to be less than 500 characters long.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </md-list-item>
+
+                    <md-divider></md-divider>
+                    <md-list-item>
+                        <div class="md-list-item-text" flex layout="column">
+                            <h4>Thought processes:</h4>
+                            <md-input-container class="md-block">
+                                <label>Check if normal:</label>
+                                <div flex layout="row" layout-align="center center">
+                                    <md-checkbox ng-model="model.associations" data-ng-disabled="isPreview" class="md-primary" aria-label="Suicidal ideation">
+                                        Associations
+                                    </md-checkbox>
+                                    <md-checkbox ng-model="model.processes" class="md-primary" data-ng-disabled="isPreview" aria-label="Homicidal ideation">
+                                        Processes
+                                    </md-checkbox>
+                                    <md-checkbox ng-model="model.abstraction" class="md-primary" data-ng-disabled="isPreview" aria-label="Violent ideation">
+                                        Abstraction
+                                    </md-checkbox>
+                                    <md-checkbox ng-model="model.computation" class="md-primary" data-ng-disabled="isPreview" aria-label="Violent ideation">
+                                        Computation
+                                    </md-checkbox>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </md-list-item>
+
+                    <md-divider></md-divider>
+                    <md-list-item>
+                        <div class="md-list-item-text" flex layout="column">
+                            <h4>Speech:</h4>
+                            <md-input-container class="md-block">
+                                <label>Check if normal:</label>
+                                <div flex layout="row" layout-align="center center">
+                                    <md-checkbox ng-model="model.rate" class="md-primary" data-ng-disabled="isPreview" aria-label="Suicidal ideation">
+                                        Rate
+                                    </md-checkbox>
+                                    <md-checkbox ng-model="model.volume" class="md-primary" data-ng-disabled="isPreview" aria-label="Homicidal ideation">
+                                        Volume
+                                    </md-checkbox>
+                                    <md-checkbox ng-model="model.articulation" class="md-primary" data-ng-disabled="isPreview" aria-label="Violent ideation">
+                                        Articulation
+                                    </md-checkbox>
+                                    <md-checkbox ng-model="model.coherence" class="md-primary" data-ng-disabled="isPreview" aria-label="Violent ideation">
+                                        Coherence
+                                    </md-checkbox>
+                                    <md-checkbox ng-model="model.spontaneity" class="md-primary" data-ng-disabled="isPreview" aria-label="Violent ideation">
+                                        Spontaneity
+                                    </md-checkbox>
+                                </div>
+                            </md-input-container>
+                            <md-input-container class="md-block">
+                                <label>Notes:</label>
+                                <textarea ng-model="model.speech_Notes" name="speech_Notes" md-maxlength="500" rows="5" data-ng-readonly="isPreview"></textarea>
+                                <div ng-messages="templateForm.speech_Notes.$error">
+                                    <div ng-message="md-maxlength">Speech notes has to be less than 500 characters long.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </md-list-item>
+
+                    <md-divider></md-divider>
+                    <md-list-item>
+                        <div class="md-list-item-text" flex layout="column">
+                            <h4>Description of associations:</h4>
+                            <md-input-container class="md-block">
+                                <label>Loose, tangential, circumstantial, intact, etc.</label>
+                                <textarea ng-model="model.description_Of_Associations" name="description_Of_Associations" md-maxlength="500" rows="5" data-ng-readonly="isPreview"></textarea>
+                                <div ng-messages="templateForm.description_Of_Associations.$error">
+                                    <div ng-message="md-maxlength">Description of associations has to be less than 500 characters long.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </md-list-item>
+
+                    <md-divider></md-divider>
+                    <md-list-item>
+                        <div class="md-list-item-text" flex layout="column">
+                            <h4>Description of abnormal or psychotic thoughts:</h4>
+                            <md-input-container class="md-block">
+                                <label>Hallucinations, delusions, preoccupation with violence, homicidal or suicidal ideation, obsessions, etc.</label>
+                                <textarea ng-model="model.description_Of_Psychotic_Thoughts" name="description_Of_Psychotic_Thoughts" md-maxlength="500" rows="5" data-ng-readonly="isPreview"></textarea>
+                                <div ng-messages="templateForm.description_Of_Psychotic_Thoughts.$error">
+                                    <div ng-message="md-maxlength">Description of abnormal or psychotic thoughts has to be less than 500 characters long.</div>
+                                </div>
+                            </md-input-container>
+                            <div flex layout="row" layout-align="center center">
+                                <md-checkbox ng-model="model.isSuicidalIdeation" data-ng-disabled="isPreview" class="md-primary" aria-label="Suicidal ideation">
+                                    Suicidal ideation
+                                </md-checkbox>
+                                <md-checkbox ng-model="model.isHomicidalIdeation" data-ng-disabled="isPreview" class="md-primary" aria-label="Homicidal ideation">
+                                    Homicidal ideation
+                                </md-checkbox>
+                                <md-checkbox ng-model="model.isViolentIdeation" data-ng-disabled="isPreview" class="md-primary" aria-label="Violent ideation">
+                                    Violent ideation
+                                </md-checkbox>
+                            </div>
+                        </div>
+                    </md-list-item>
+
+                    <md-divider></md-divider>
+                    <md-list-item>
+                        <div class="md-list-item-text" flex layout="column">
+                            <h4>Description of patient’s judgment and insigh:</h4>
+                            <md-input-container class="md-block">
+                                <label>Description</label>
+                                <textarea ng-model="model.description_Of_Patient_Judgment" name="description_Of_Patient_Judgment" md-maxlength="500" rows="5" data-ng-readonly="isPreview"></textarea>
+                                <div ng-messages="templateForm.description_Of_Patient_Judgment.$error">
+                                    <div ng-message="md-maxlength">Description of patient’s judgment and insigh has to be less than 500 characters long.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </md-list-item>
+
+                    <md-divider></md-divider>
+                    <md-list-item>
+                        <div class="md-list-item-text" flex layout="column">
+                            <h4>Orientation:</h4>
+                            <md-input-container class="md-block">
+                                <label>Orientation</label>
+                                <md-select name="Orientation" ng-model="model.orientation" data-ng-disabled="isPreview" required>
+                                    <md-option value="Male">Male</md-option>
+                                    <md-option value="Female">Female</md-option>
+                                    <md-option value="Other">Other</md-option>
+                                </md-select>
+                                <div class="errors" ng-messages="templateForm.Orientation.$error" role="alert">
+                                    <div ng-message="required">Orientation Required</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </md-list-item>
+
+                    <md-divider></md-divider>
+                    <md-list-item>
+                        <div class="md-list-item-text" flex layout="column">
+                            <h4>Memory (Recent/Remote):</h4>
+                            <md-input-container class="md-block">
+                                <label>Memory</label>
+                                <textarea ng-model="model.memory" md-maxlength="500" name="memory" rows="5" data-ng-readonly="isPreview"></textarea>
+                                <div ng-messages="templateForm.memory.$error">
+                                    <div ng-message="md-maxlength">Memory has to be less than 500 characters long.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </md-list-item>
+
+                    <md-divider></md-divider>
+                    <md-list-item>
+                        <div class="md-list-item-text" flex layout="column">
+                            <h4>Attention/Concentration:</h4>
+                            <md-input-container class="md-block">
+                                <label>Attention/Concentration</label>
+                                <textarea ng-model="model.concentration" name="concentration" md-maxlength="500" rows="5" data-ng-readonly="isPreview"></textarea>
+                                <div ng-messages="templateForm.concentration.$error">
+                                    <div ng-message="md-maxlength">Attention/Concentration has to be less than 500 characters long.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </md-list-item>
+
+                    <md-divider></md-divider>
+                    <md-list-item>
+                        <div class="md-list-item-text" flex layout="column">
+                            <h4>Language:</h4>
+                            <md-input-container class="md-block">
+                                <label>Language</label>
+                                <textarea ng-model="model.language" name="language" md-maxlength="500" rows="5" data-ng-readonly="isPreview"></textarea>
+                                <div ng-messages="templateForm.language.$error">
+                                    <div ng-message="md-maxlength">Language has to be less than 500 characters long.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </md-list-item>
+
+                    <md-divider></md-divider>
+                    <md-list-item>
+                        <div class="md-list-item-text" flex layout="row">
+                            <h4 flex="20">Fund of knowledge:</h4>
+                            <md-radio-group class="md-primary" ng-model="model.isIntact" flex="80" layout="row" layout-align="left center">
+                                <md-radio-button ng-value="true" data-ng-disabled="isPreview"> Intact </md-radio-button>
+                                <md-radio-button ng-value="false" data-ng-disabled="isPreview"> Inadequate </md-radio-button>
+                            </md-radio-group>
+                        </div>
+                    </md-list-item>
+
+                    <md-divider></md-divider>
+                    <md-list-item>
+                        <div class="md-list-item-text" flex layout="column">
+                            <h4>Mood and affect:</h4>
+                            <md-input-container class="md-block">
+                                <label>Mood</label>
+                                <textarea ng-model="model.mood" name="mood" md-maxlength="500" rows="5" data-ng-readonly="isPreview"></textarea>
+                                <div ng-messages="templateForm.mood.$error">
+                                    <div ng-message="md-maxlength">Language has to be less than 500 characters long.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </md-list-item>
+
+                    <md-divider></md-divider>
+                    <md-list-item>
+                        <div class="md-list-item-text" flex layout="column">
+                            <h4>Other Findings:</h4>
+                            <md-input-container class="md-block">
+                                <label>Cognitive screens, etc.</label>
+                                <textarea ng-model="model.other" name="other" md-maxlength="500" rows="5" data-ng-readonly="isPreview"></textarea>
+                                <div ng-messages="templateForm.other.$error">
+                                    <div ng-message="md-maxlength">Other Findings has to be less than 500 characters long.</div>
+                                </div>
+                            </md-input-container>
+                        </div>
+                    </md-list-item>
+
+                </md-list>
+            </md-content>
+        </div>
+
+        <div layout="row" layout-wrap flex class="border">
+            <div flex="100" class="gray border-bottom" layout="row" layout-align="center">
+                <b>MEDICAL DECISION MAKING</b>
+            </div>
+            <div layout="row" flex="100" class="gray border-bottom">
+                <div flex="50" layout="row" layout-align="center" class="border-right"><b>Diagnoses</b></div>
+                <div flex="50" layout="row" layout-align="center"><b>Data</b></div>
+            </div>
+            <div layout="row" flex="100" class="border-bottom">
+                <div flex="50" layout="column" class="border-right">
+                    <md-input-container class="md-block border-bottom">
+                        <label>Rule outs:</label>
+                        <textarea name="rule_Outs" layout-padding ng-model="model.rule_Outs" md-maxlength="500" rows="5" data-ng-readonly="isPreview"></textarea>
+                        <div ng-messages="templateForm.rule_Outs.$error">
+                            <div ng-message="md-maxlength">Rule has to be less than 500 characters long.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Formulation</label>
+                        <textarea name="formulation" layout-padding ng-model="model.formulation" md-maxlength="500" rows="5" data-ng-readonly="isPreview"></textarea>
+                        <div ng-messages="templateForm.formulation.$error">
+                            <div ng-message="md-maxlength">Formulation has to be less than 500 characters long.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+                <md-input-container class="md-block" flex="50">
+                    <label>Medical Records/Labs/Diagnostic Tests Reviewed</label>
+                    <textarea name="tests_Reviewed" layout-padding ng-model="model.tests_Reviewed" md-maxlength="500" rows="5" data-ng-readonly="isPreview"></textarea>
+                    <div ng-messages="templateForm.tests_Reviewed.$error">
+                        <div ng-message="md-maxlength">Medical Records has to be less than 500 characters long.</div>
+                    </div>
+                </md-input-container>
+            </div>
+            <div layout="row" flex="100" class="gray">
+                <div flex="50" layout="row" layout-align="center" class="border-right border-bottom"><b>Problem/Condition</b></div>
+                <div flex="50" layout="row" layout-align="center" class="border-bottom"><b>Treatment Plan</b></div>
+            </div>
+            <div layout="row" flex="100">
+                <div flex="50" layout="column" layout-align="center" class="border-right border-bottom">
+                    <div flex="100" layout-padding layout="row" layout-align="left center">
+                        <h5 flex="30" layout="row">Problem/Condition:</h5>
+                        <md-radio-group class="md-primary" ng-model="model.isNew" flex="70" layout="row" layout-align="left center">
+                            <md-radio-button ng-value="true" data-ng-disabled="isPreview"> New </md-radio-button>
+                            <md-radio-button ng-value="false" data-ng-disabled="isPreview"> Established </md-radio-button>
+                        </md-radio-group>
+                    </div>
+                    <div flex="100" layout-padding layout="row" layout-align="left center">
+                        <h5 flex="30" layout="row">Status:</h5>
+                        <md-radio-group class="md-primary" ng-model="model.isImproving" flex="70" layout="row" layout-align="left center">
+                            <md-radio-button ng-value="true" data-ng-disabled="isPreview"> Improving </md-radio-button>
+                            <md-radio-button ng-value="false" data-ng-disabled="isPreview"> Worsening </md-radio-button>
+                        </md-radio-group>
+                    </div>
+                    <div flex="100" layout-padding layout="row" layout-align="left center">
+                        <h5 flex="30" layout="row">Comorbidities:</h5>
+                            <div flex="70" layout="column" layout-align="left">
+                                <md-checkbox ng-model="model.isStable" data-ng-disabled="isPreview" class="md-primary" aria-label="Suicidal ideation">
+                                    Stable
+                                </md-checkbox>
+                                <md-checkbox ng-model="model.isComplicated" class="md-primary" data-ng-disabled="isPreview" aria-label="Homicidal ideation">
+                                    Complications/side effects
+                                </md-checkbox>
+                                <md-checkbox ng-model="model.isIndependent" class="md-primary" data-ng-disabled="isPreview" aria-label="Violent ideation">
+                                    Independent management required
+                                </md-checkbox>
+                                <md-checkbox ng-model="model.interface_With_Management" class="md-primary" data-ng-disabled="isPreview" aria-label="Violent ideation">
+                                    Interference with management of primary condition(s)
+                                </md-checkbox>
+                            </div>
+                    </div>
+                </div>
+                <div flex="50" layout="column" layout-align="center">
+                    <md-input-container class="md-block border-bottom">
+                        <label>Intervention/Psychotherapy</label>
+                        <textarea name="intervention" layout-padding ng-model="model.intervention" md-maxlength="500" rows="5" data-ng-readonly="isPreview"></textarea>
+                        <div ng-messages="templateForm.intervention.$error">
+                            <div ng-message="md-maxlength">Intervention/Psychotherapy has to be less than 500 characters long.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block border-bottom">
+                        <label>Medication</label>
+                        <textarea name="medication" layout-padding ng-model="model.medication" md-maxlength="500" rows="5" data-ng-readonly="isPreview"></textarea>
+                        <div ng-messages="templateForm.medication.$error">
+                            <div ng-message="md-maxlength">Medication has to be less than 500 characters long.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block border-bottom">
+                        <label>Labs/Radiology/Tests/Consultation</label>
+                        <textarea name="consultation" layout-padding ng-model="model.consultation" md-maxlength="500" rows="5" data-ng-readonly="isPreview"></textarea>
+                        <div ng-messages="templateForm.consultation.$error">
+                            <div ng-message="md-maxlength">Labs has to be less than 500 characters long.</div>
+                        </div>
+                    </md-input-container>
+                    <md-input-container class="md-block">
+                        <label>Other</label>
+                        <textarea name="treatment_Other" layout-padding ng-model="model.treatment_Other" md-maxlength="500" rows="5" data-ng-readonly="isPreview"></textarea>
+                        <div ng-messages="templateForm.treatment_Other.$error">
+                            <div ng-message="md-maxlength">Other has to be less than 500 characters long.</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+        </div>
+
+        <div layout="column" layout-wrap layout-padding class="border">
+            <md-switch class="md-primary" ng-model="model.isGreaterThanFifty" aria-label="Switch 1" data-ng-disabled="isPreview">
+                Greater than 50% of time spent in counseling/coordination of care (document)
+            </md-switch>
+            <md-input-container class="md-block" data-ng-show="model.isGreaterThanFifty">
+                <label>Description</label>
+                <textarea ng-model="model.greaterThanFifty_Content" md-maxlength="500" rows="5" data-ng-readonly="isPreview"></textarea>
+                <div ng-messages="model.description_Of_Associations.$error">
+                    <div ng-message="md-maxlength">Description has to be less than 500 characters long.</div>
+                </div>
+            </md-input-container>
+        </div>
+
+    </form>
+
+    <section layout="row" layout-sm="column" flex="100" layout-align="center center" layout-wrap ng-hide="isPreview">
+        <md-button class="md-raised md-warn" data-ng-click="saveTemplate()" ng-disabled="templateForm.$invalid">Save</md-button>
+        <md-button class="md-raised md-primary" data-ng-click="getTemplate()">Restore All</md-button>
+    </section>
+
+</div>
