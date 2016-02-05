@@ -20,6 +20,7 @@ namespace Established_Patient_Form.Controllers
         }
 
         [HttpPost]
+        [Route("saveTemplate")]
         public IHttpActionResult Add(TemplateModel model)
         {
             var errors = Validation(model);
