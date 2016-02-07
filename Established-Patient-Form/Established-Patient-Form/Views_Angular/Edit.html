@@ -27,6 +27,10 @@
         font-size: 14px;
         opacity: 0.54;
     }
+    #reviewOfSystems>div {
+        min-height:150px;
+    }
+
 </style>
 <div layout-sm="rows" data-ng-init="getTemplate()">
     <section layout="row" layout-sm="column" flex="100" layout-align="center center" layout-wrap ng-hide="isPreview">
@@ -78,14 +82,21 @@
             <div flex="100" layout="row" layout-align="center border-bottom">
                 (1 system - Problem Pertinent; 2-9 systems – Extended; 10 or more systems or some systems noted as ”all others negative”- Complete)
             </div>
-            <div layout-wrap flex="100" layout-padding>
-                <div layout="row">
-                        <md-switch flex="25" class="md-primary" ng-model="model.constitutional.isPositive" aria-label="Constitutional" data-ng-disabled="isPreview">
+            <div id="reviewOfSystems" layout-wrap flex layout-padding>
+                <div layout="row" flex layout-align="left center">
+                        <!--<md-switch flex="25" class="md-primary" ng-model="model.constitutional.isPositive" aria-label="Constitutional" data-ng-disabled="isPreview">
                             1. Constitutional
-                        </md-switch>
-                        <md-input-container class="md-block" data-ng-disabled="isPreview" flex="75" layout="row" layout-align="left center" >
-                            <label>Notes</label>
-                            <textarea ng-model="model.constitutional.notes" md-maxlength="200" rows="5" data-ng-readonly="isPreview"></textarea>
+                        </md-switch>-->
+                        <div flex="20">1. Constitutional</div>
+                    <div flex="20">
+                        <md-radio-group md-no-ink class="md-primary" ng-model="model.constitutional.isPositive" layout="row">
+                            <md-radio-button ng-value="true">pos</md-radio-button>
+                            <md-radio-button ng-value="false">neg</md-radio-button>
+                        </md-radio-group>
+                    </div>
+                        <md-input-container class="md-block"  flex  md-nofloat  >
+                            <label>{{model.constitutional.isPositive==null?'Not Set':model.constitutional.isPositive?'Notes':'No Change'}}</label>
+                            <textarea ng-model="model.constitutional.notes" ng-show="model.constitutional.isPositive" md-maxlength="200" rows="5"></textarea>
                             <div ng-messages="model.constitutional.$error">
                                 <div ng-message="md-maxlength">Notes has to be less than 200 characters long.</div>
                             </div>
@@ -279,7 +290,7 @@
                                 <div flex="20" layout="row" layout-align="center center">
                                     <md-input-container class="md-block" data-ng-readonly="isPreview">
                                         <label>Sitting</label>
-                                        <input ng-model="model.blood_Pressure_Sitting" name="blood_Pressure_Sitting" type="number" min="10" data-ng-readonly="isPreview" />
+                                        <input ng-model="model.blood_Pressure_Sitting" name="blood_Pressure_Sitting" type="text" />
                                         <div ng-messages="templateForm.blood_Pressure_Sitting.$error" multiple>
                                             <div ng-message="min">Sitting blood pressure has to be bigger than 10 characters long.</div>
                                         </div>

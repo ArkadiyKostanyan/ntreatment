@@ -2,12 +2,12 @@
 {
     public class MedicalProblems
     {
-        public bool IsPositive { get; set; }
+        public bool? IsPositive { get; set; }
         public string Notes { get; set; }
 
         public MedicalProblems()
         {
-            IsPositive = false;
+            //IsPositive = false;
             Notes = string.Empty;
         }
     }

@@ -22,11 +22,20 @@
         public MedicalProblems Allergies { get; set; }
 
         #endregion
-
+        #region UnitsOfMeasure
+        public class BloodPressure {
+            public double systolic { get; set; } // 
+            public double diastolic { get; set; }
+            public override string ToString()
+            {
+                return $"{systolic}/{diastolic}";
+            }
+        }
+        #endregion
         #region PSYCHIATRIC SPECIALTY EXAMINATION
         public bool IsExamined { get; set; }
-        public double Blood_Pressure_Sitting { get; set; }
-        public double Blood_Pressure_Standing { get; set; }
+        public BloodPressure Blood_Pressure_Sitting { get; set; } 
+        public BloodPressure Blood_Pressure_Standing { get; set; }
         public double Supine { get; set; }
         public double Temp { get; set; }
         public double Pulse_Rate { get; set; }
