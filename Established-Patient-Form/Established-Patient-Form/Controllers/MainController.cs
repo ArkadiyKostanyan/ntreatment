@@ -5,6 +5,7 @@ using System.Web.Http;
 
 namespace Established_Patient_Form.Controllers
 {
+    [RoutePrefix("api/main")]
     public class MainController : ApiController
     {
         private DataManager dManager;
@@ -14,14 +15,15 @@ namespace Established_Patient_Form.Controllers
         }
 
         [HttpGet]
+        [Route("")]
         public IHttpActionResult Get()
         {
             return Ok(dManager.Get());
         }
 
         [HttpPost]
-        [Route("saveTemplate")]
-        public IHttpActionResult Add(TemplateModel model)
+        [Route("Save")]
+        public IHttpActionResult Save(TemplateModel model)
         {
             var errors = Validation(model);
             foreach (var er in errors)
@@ -30,6 +32,8 @@ namespace Established_Patient_Form.Controllers
             }
             if (ModelState.IsValid)
             {
+                model.Blood_Pressure_Sitting = new BloodPressure(model.Blood_Pressure_Sitting_Manage);
+                model.Blood_Pressure_Standing = new BloodPressure(model.Blood_Pressure_Standing_Manage);
                 dManager.Save(model);
                 return Ok("Template have been saved");
             }

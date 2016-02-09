@@ -135,8 +135,8 @@
         <ul>
             <li>
                 Vital Signs (any 3 or more of the 7 listed):
-                Blood Pressure: (Sitting/Standing) __{{model.blood_Pressure_Sitting / model.blood_Pressure_Standing}}__ (Supine) __{{model.supine}}_
-                Temp_{{model.temp}}_ Pulse (Rate/Regularity) __{{model.pulse_Rate / model.pulse_Regularity}}__ Respiration __{{model.respiration}}__Height _{{model.height}}_ Weight _{{model.weight}}__
+                Blood Pressure: (Sitting/Standing) __{{model.blood_Pressure_Sitting}} / {{model.blood_Pressure_Standing}}__ (Supine) __{{model.supine}}_
+                Temp_{{model.temp}}_ Pulse (Rate/Regularity) __{{model.pulse_Rate}} / {{model.pulse_Regularity}}__ Respiration __{{model.respiration}}__Height _{{model.height}}_ Weight _{{model.weight}}__
             </li>
             <li>
                 General Appearance and Manner: (e.g., development, nutrition, body habitus, deformities, attention to grooming)
@@ -205,7 +205,6 @@
             <div class="col-md-6">
                 <!--Axis I-V:-->
                 Rule outs: {{model.rule_Outs}}
-                ------------------
                 Formulation {{model.formulation}}
             </div>
             <div class="col-md-6">Medical Records/Labs/Diagnostic Tests Reviewed {{model.tests_Reviewed}}</div>

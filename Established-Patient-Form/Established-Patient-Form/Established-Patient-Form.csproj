@@ -162,7 +162,6 @@
     <Content Include="Scripts\Application\Controllers\mainController.js" />
     <Content Include="Scripts\Application\Services\mainService.js" />
     <Content Include="Scripts\bootstrap.js" />
-    <Content Include="model.json" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
@@ -173,6 +172,7 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Views_Angular\Edit.html" />
+    <Content Include="Views_Angular\Preview.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

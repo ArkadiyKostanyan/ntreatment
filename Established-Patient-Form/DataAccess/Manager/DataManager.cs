@@ -18,7 +18,7 @@ namespace DataAccess.Manager
 
             var dataFromFile = File.ReadAllText(FilePath());
             TemplateModel data = DataSerializer.Deserialize<TemplateModel>(dataFromFile);
-
+            data.Init();
             return data;
         }
 

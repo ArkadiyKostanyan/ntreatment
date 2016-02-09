@@ -2,6 +2,7 @@
 
     $scope.model = {};
     $scope.isPreview = false;
+    $scope.showHtml = false;
 
     $scope.getTemplate = function () {
         if ($location.path() == '/preview') {
@@ -16,11 +17,14 @@
     };
 
     $scope.saveTemplate = function () {
+
+        //var html = $("#modelHtml").html(); //if you whant send html to server
+
         mainService.saveTemplate($scope.model).then(function (response) {
             $scope.message = response.data.substr(1, response.data.length - 2);
             alert("Template have been saved.")
             $location.path('/preview');
-            }, function (response) {
+        }, function (response) {
                 var errors = [];
                 for (var key in response.data.modelState) {
                     for (var i = 0; i < response.data.modelState[key].length; i++) {

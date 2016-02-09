@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Manager\DataManager.cs" />
+    <Compile Include="Models\BloodPressure.cs" />
     <Compile Include="Models\MedicalProblems.cs" />
     <Compile Include="Models\TemplateModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

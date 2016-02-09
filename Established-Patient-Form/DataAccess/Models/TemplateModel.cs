@@ -1,4 +1,6 @@
-﻿namespace DataAccess.Models
+﻿using System.Web.Script.Serialization;
+
+namespace DataAccess.Models
 {
     public class TemplateModel
     {
@@ -22,27 +24,22 @@
         public MedicalProblems Allergies { get; set; }
 
         #endregion
-        #region UnitsOfMeasure
-        public class BloodPressure {
-            public double systolic { get; set; } // 
-            public double diastolic { get; set; }
-            public override string ToString()
-            {
-                return $"{systolic}/{diastolic}";
-            }
-        }
-        #endregion
+
         #region PSYCHIATRIC SPECIALTY EXAMINATION
         public bool IsExamined { get; set; }
+        [ScriptIgnore]
+        public string Blood_Pressure_Sitting_Manage { get; set; }
         public BloodPressure Blood_Pressure_Sitting { get; set; } 
         public BloodPressure Blood_Pressure_Standing { get; set; }
-        public double Supine { get; set; }
-        public double Temp { get; set; }
-        public double Pulse_Rate { get; set; }
-        public double Pulse_Regularity { get; set; }
-        public double Respiration { get; set; }
-        public double Height { get; set; }
-        public double Weight { get; set; }
+        [ScriptIgnore]
+        public string Blood_Pressure_Standing_Manage { get; set; }
+        public double? Supine { get; set; }
+        public double? Temp { get; set; }
+        public double? Pulse_Rate { get; set; }
+        public double? Pulse_Regularity { get; set; }
+        public double? Respiration { get; set; }
+        public double? Height { get; set; }
+        public double? Weight { get; set; }
         public string General_Appearance { get; set; }
         public bool Assessment { get; set; }
         public bool Examination_Of_Gait { get; set; }
@@ -109,6 +106,16 @@
             Endocrine = new MedicalProblems();
             Hemotologic = new MedicalProblems();
             Allergies = new MedicalProblems();
+
+            Blood_Pressure_Sitting_Manage = Blood_Pressure_Sitting != null ? Blood_Pressure_Sitting.ToString() : string.Empty;
+            Blood_Pressure_Standing_Manage = Blood_Pressure_Standing != null ? Blood_Pressure_Standing.ToString() : string.Empty;
         }
+
+        public void Init()
+        {
+            Blood_Pressure_Sitting_Manage = Blood_Pressure_Sitting != null ? Blood_Pressure_Sitting.ToString() : string.Empty;
+            Blood_Pressure_Standing_Manage = Blood_Pressure_Standing != null ? Blood_Pressure_Standing.ToString() : string.Empty;
+        }
+
     }
 }
