@@ -1,0 +1,340 @@
+﻿<div  layout-sm="rows" ng-cloak>
+    <div layout-sm="rows" layout="row">
+        <div flex="50" layout="row" layout-align="center"><b>User:</b>&nbsp; {{User.Name}}</div>
+        <div flex="50" layout="row" layout-align="center"><b>User Id:</b>&nbsp; {{User.Id}}</div>
+    </div>
+    <div layout-sm="rows" layout="row">
+        <div flex="90" layout="row"><b>Instructions:</b> This is a list of things different people might say about themselves. We are interested in how you would describe yourself. There are no right or wrong answers. So you can describe yourself as honestly as possible, we will keep your responses confidential. We’d like you to take your time and read each statement carefully, selecting the response that best describes you.</div>
+        <div flex="10" layout="row"><b>Clinician Use</b></div>
+    </div>
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout="row"></div>
+        <div flex="35" layout="row"></div>
+        <div flex="10" layout="row" layout-padding><b>Very False or Often False</b></div>
+        <div flex="15" layout="row" layout-padding><b>Sometimes or Somewhat False</b></div>
+        <div flex="15" layout="row" layout-padding><b>Sometimes or Somewhat True</b></div>
+        <div flex="10" layout="row" layout-padding><b>Very True or Often True</b></div>
+        <div flex="10" layout="row" layout-padding><b>Item score</b></div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5"  layout-align="center" layout="row" layout-padding>1</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>People would describe me as reckless.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" layout-align="center center"  ng-model="model.Reckless" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25"   layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.Reckless}}</div>
+    </div>
+    
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>2</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>I feel like I act totally on impulse.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.OnImpulse" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25"    ng-value="n" aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.OnImpulse}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>3</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>Even though I know better, I can’t stop making rash decisions.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.RashDecisions" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25"    ng-value="n" aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.RashDecisions}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>4</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>I often feel like nothing I do really matters.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.NothingIDo" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"    aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.NothingIDo}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>5</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>Others see me as irresponsible.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.Irresponsible" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"    aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.Irresponsible}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>6</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>I’m not good at planning ahead.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.PlanningAhead" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25"  ng-value="n" aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.PlanningAhead}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>7</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>My thoughts often don’t make sense to others.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.Thoughts" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25"  ng-value="n" aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.Thoughts}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>8</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>I worry about almost everything.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.WorryEverything" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25"  ng-value="n" aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.WorryEverything}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>9</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>I get emotional easily, often for very little reason.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.EmotionalEasily" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25"  ng-value="n" aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.EmotionalEasily}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>10</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>I fear being alone in life more than anything else.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.FearBeingAlone" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.FearBeingAlone}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>11</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>I get stuck on one way of doing things, even when it’s clear it won’t work.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.GetStuckOnOneWay" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.GetStuckOnOneWay}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>12</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>I have seen things that weren’t really there.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.ThingsThatNotReally" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.ThingsThatNotReally}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>13</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>I steer clear of romantic relationships.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.RomanticRelationships" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.RomanticRelationships}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>14</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>I’m not interested in making friends.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.MakingFriends" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.MakingFriends}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>15</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>I get irritated easily by all sorts of things.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.IrritatedEasily" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.IrritatedEasily}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>16</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>I don’t like to get too close to people.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.CloseToPeople" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.CloseToPeople}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>17</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>It’s no big deal if I hurt other peoples’ feelings.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.HurtOther" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.HurtOther}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>18</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>I rarely get enthusiastic about anything.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.Enthusiastic" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.Enthusiastic}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>19</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>I crave attention.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.CraveAttention" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.CraveAttention}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>20</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>I often have to deal with people who are less important than me.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.DealLessImportant" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.DealLessImportant}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>21</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>I often have thoughts that make sense to me but that other people say are strange.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.ThoughtsMakeSense" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.ThoughtsMakeSense}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>22</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>I use people to get what I want.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.GetWhatIWant" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.GetWhatIWant}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>23</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>I often “zone out” and then suddenly come to and realize that a lot of time has passed.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.ZoneOut" data-ng-change="CalculateData()" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.ZoneOut}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>24</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>Things around me often feel unreal, or more real than usual.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.ThingsUnreal" layout-align="center" data-ng-change="CalculateData()" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.ThingsUnreal}}</div>
+    </div>
+
+    <div layout-sm="rows" flex layout="row">
+        <div flex="5" layout-align="center" layout="row" layout-padding>25</div>
+        <div flex="35" layout-align="start center" layout="row" layout-padding>It is easy for me to take advantage of others.</div>
+        <div flex="60" layout="row">
+            <md-radio-group md-no-ink class="md-primary" ng-model="model.TakeAdvantage" data-ng-keyup="CalculateData()" layout-align="center" flex="100" layout="row">
+                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+            </md-radio-group>
+        </div>
+        <div flex="10" layout="row" layout-align="center center">{{model.TakeAdvantage}}</div>
+    </div>
+
+    <div layout-sm="rows" layout="row">
+        <div flex="90" layout-align="end center" layout="row" layout-padding>Total/Partial Raw Score:</div>
+        <div flex="10" layout="row" layout-align="center center">{{model.TotalScore}}</div>
+    </div>
+    <div layout-sm="rows" layout="row">
+        <div flex="90" layout-align="end center" layout="row" layout-padding>Prorated Total Score: (if 1-6 items left unanswered)</div>
+        <div flex="10" layout="row" layout-align="center center">{{model.ProratedTotalScore}}</div>
+    </div>
+    <div layout-sm="rows" layout="row">
+        <div flex="90" layout-align="end center" layout="row" layout-padding>Average Total Score:</div>
+        <div flex="10" layout="row" layout-align="center center">{{model.AvarageTotalScore}}</div>
+    </div>
+</div>
+
+<section layout="row" layout-sm="column" flex="100" layout-align="center center" layout-wrap>
+    <md-button class="md-raised md-warn" data-ng-click="saveDSMTemplate()">Save</md-button>
+</section>
+
+<!--<table width="100%">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th>Very False or Often False</th>
+            <th>Sometimes or Somewhat False</th>
+            <th>Sometimes or Somewhat True</th>
+            <th>Very True or Often True</th>
+            <th>Item score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>1</td>
+            <td>People would describe me as reckless.</td>
+            <td colspan="4">
+                <md-radio-group md-no-ink class="md-primary" ng-model="model.People" layout="row">
+                    <md-radio-button ng-value="0" ayout-align="center" flex="20"></md-radio-button>
+                    <md-radio-button ng-value="1" ayout-align="center" flex="30"></md-radio-button>
+                    <md-radio-button ng-value="2" ayout-align="center" flex="30"></md-radio-button>
+                    <md-radio-button ng-value="3" ayout-align="center" flex="20"></md-radio-button>
+                </md-radio-group>
+            </td>
+            <td>{{model.People}}</td>
+        </tr>
+    </tbody>
+</table>-->

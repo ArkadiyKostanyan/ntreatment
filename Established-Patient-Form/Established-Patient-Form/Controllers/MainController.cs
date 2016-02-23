@@ -25,11 +25,6 @@ namespace Established_Patient_Form.Controllers
         [Route("Save")]
         public IHttpActionResult Save(TemplateModel model)
         {
-            var errors = Validation(model);
-            foreach (var er in errors)
-            {
-                ModelState.AddModelError("Validation error", er);
-            }
             if (ModelState.IsValid)
             {
                 model.Blood_Pressure_Sitting = new BloodPressure(model.Blood_Pressure_Sitting_Manage);
@@ -40,12 +35,16 @@ namespace Established_Patient_Form.Controllers
             return BadRequest(ModelState);
         }
 
-        private List<string> Validation(TemplateModel model)
+        [HttpPost]
+        [Route("SaveDSM")]
+        public IHttpActionResult SaveDSM(object model)
         {
-            List<string> errors = new List<string>();
-            int counter = 0;
-            //here we can add some rules
-            return errors;
+            if (model != null)
+            {
+                dManager.SaveDSM(model);
+                return Ok("DSM Template have been saved");
+            }
+            return BadRequest(ModelState);
         }
     }
 }

@@ -3,3 +3,8 @@ D:\work\GitHub\Established-Patient-Form\DataAccess\bin\Debug\DataAccess.pdb
 D:\work\GitHub\Established-Patient-Form\DataAccess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache
 D:\work\GitHub\Established-Patient-Form\DataAccess\obj\Debug\DataAccess.dll
 D:\work\GitHub\Established-Patient-Form\DataAccess\obj\Debug\DataAccess.pdb
+D:\work\GitHub\ntreatment\Established-Patient-Form\DataAccess\bin\Debug\DataAccess.dll
+D:\work\GitHub\ntreatment\Established-Patient-Form\DataAccess\bin\Debug\DataAccess.pdb
+D:\work\GitHub\ntreatment\Established-Patient-Form\DataAccess\obj\Debug\DataAccess.dll
+D:\work\GitHub\ntreatment\Established-Patient-Form\DataAccess\obj\Debug\DataAccess.pdb
+D:\work\GitHub\ntreatment\Established-Patient-Form\DataAccess\obj\Debug\DataAccess.csprojResolveAssemblyReference.cache

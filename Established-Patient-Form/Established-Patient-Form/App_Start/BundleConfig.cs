@@ -23,37 +23,41 @@ namespace Established_Patient_Form
                       "~/Scripts/respond.js"));
 
             //Angular libraries
-            bundles.Add(new ScriptBundle("~/bundles/Angular").Include(
-                      "~/Scripts/Angular/angular.min.js",
-                      "~/Scripts/Angular/angular-animate.min.js",
-                      "~/Scripts/Angular/angular-aria.min.js",
-                      "~/Scripts/Angular/angular-cookies.min.js",
-                      "~/Scripts/Angular/angular-loader.min.js",
-                      "~/Scripts/Angular/angular-message-format.min.js",
-                      "~/Scripts/Angular/angular-messages.min.js",
-                      "~/Scripts/Angular/angular-mocks.js",
-                      "~/Scripts/Angular/angular-resource.min.js",
-                      "~/Scripts/Angular/angular-route.min.js",
-                      "~/Scripts/Angular/angular-sanitize.min.js",
+            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
+                      "~/Scripts/angular/angular.min.js",
+                      "~/Scripts/angular/angular-animate.min.js",
+                      "~/Scripts/angular/angular-aria.min.js",
+                      "~/Scripts/angular/angular-cookies.min.js",
+                      "~/Scripts/angular/angular-loader.min.js",
+                      "~/Scripts/angular/angular-message-format.min.js",
+                      "~/Scripts/angular/angular-messages.min.js",
+                      "~/Scripts/angular/angular-mocks.js",
+                      "~/Scripts/angular/angular-resource.min.js",
+                      "~/Scripts/angular/angular-route.min.js",
+                      "~/Scripts/angular/angular-sanitize.min.js",
                       //"~/Scripts/Angular/angular-scenario.js",
-                      "~/Scripts/Angular/angular-touch.min.js"
+                      "~/Scripts/angular/angular-touch.min.js"
                       ));
             //Angular libraries
-            bundles.Add(new ScriptBundle("~/bundles/Angular-Material").Include(
-                      "~/Scripts/Angular-Material/angular-material.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/angular-ui").Include(
+                      "~/Scripts/angular-ui/angular-material.min.js"));
 
 
             //Angular Application 
             bundles.Add(new ScriptBundle("~/bundles/Application").Include(
-                      "~/Scripts/Application/Application.js"));
+                      "~/Scripts/app/Application.js"));
 
             //Angular Services
             bundles.Add(new ScriptBundle("~/bundles/Services").Include(
-                      "~/Scripts/Application/Services/*.js"));
+                      "~/Scripts/app/Services/*.js"));
 
             //Angular Controllers
             bundles.Add(new ScriptBundle("~/bundles/Controllers").Include(
-                      "~/Scripts/Application/Controllers/*.js"));
+                      "~/Scripts/app/Controllers/*.js"));
+
+            //Angular Directives
+            bundles.Add(new ScriptBundle("~/bundles/Directives").Include(
+                      "~/Scripts/app/Directives/*.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

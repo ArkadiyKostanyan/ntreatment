@@ -5,13 +5,13 @@ app.config(function ($routeProvider, $locationProvider, $provide) {
     //------------------------Preview page------------------------------//
     $routeProvider.when("/preview", {
         controller: "mainController",
-        templateUrl: "/Views_Angular/Edit.html"
+        templateUrl: "/partials/Edit.html"
     })
     //------------------------Preview page end---------------------------//
     //------------------------Edit page------------------------------//
     $routeProvider.when("/edit", {
         controller: "mainController",
-        templateUrl: "/Views_Angular/Edit.html"
+        templateUrl: "/partials/Edit.html"
     });
     //------------------------Edit page end---------------------------//
 

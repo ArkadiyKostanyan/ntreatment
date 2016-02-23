@@ -1,0 +1,239 @@
+﻿<style>
+    .col-md-7{
+        min-height:20px;
+    }
+</style>
+<div class="container" data-ng-init="getTemplate()">
+    <div class="container border border-top">
+        <div class="row gray text-center">
+            HISTORY
+        </div>
+        <div class="row">
+            <div class="col-md-4"> <b>CHIEF COMPLAINT/REASON FOR ENCOUNTER:</b></div>
+            <div class="col-md-8"> {{model.chief_Complaint}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"> <b>HPI</b>(1-3 elements - Breif; 4+ elements - Extended)</div>
+            <div class="col-md-8"> {{model.hpi}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"> <b>PAST, FAMILY, SOCIAL HISTORY (PFSH)</b>__Check if no change (1 history area – Pertinent; 2-3 history areas – Complete)</div>
+            <div class="col-md-8"> {{model.pfsh}}</div>
+        </div>
+    </div>
+    <div class="container border">
+        <div class="col-md-12">
+            <div class="col-md-5 text-center"><b>REVIEW OF SYSTEMS & ACTIVE MEDICAL PROBLEMS</b></div>
+            <div class="col-md-7 text-center"><b>NOTES IF POSITIVE</b></div>
+        </div>
+        <div class="col-md-12 text-left">
+            (1 system - Problem Pertinent; 2-9 systems – Extended; 10 or more systems or some systems noted as ”all others negative”- Complete)
+        </div>
+        <div class="col-md-12">
+            <div class="col-md-5">
+                <div class="col-md-6">1. Constitutional</div>
+                <div class="col-md-3">pos {{model.constitutional.isPositive ? 'V' : ''}}</div>
+                <div class="col-md-3">neg {{model.constitutional.isPositive ? '' : 'X'}}</div>
+            </div>
+            <div class="col-md-7">{{model.constitutional.notes}}</div>
+
+            <div class="col-md-5">
+                <div class="col-md-6">2. Eyes</div>
+                <div class="col-md-3">pos {{model.eyes.isPositive ? 'V' : ''}}</div>
+                <div class="col-md-3">neg {{model.eyes.isPositive ? '' : 'X'}}</div>
+            </div>
+            <div class="col-md-7">{{model.eyes.notes}}</div>
+
+            <div class="col-md-5">
+                <div class="col-md-6">3. Ears/Nose/Mouth/Throat</div>
+                <div class="col-md-3">pos {{model.throat.isPositive ? 'V' : ''}}</div>
+                <div class="col-md-3">neg {{model.throat.isPositive ? '' : 'X'}}</div>
+            </div>
+            <div class="col-md-7">{{model.throat.notes}}</div>
+
+            <div class="col-md-5">
+                <div class="col-md-6">4. Cardiovascular</div>
+                <div class="col-md-3">pos {{model.cardiovascular.isPositive ? 'V' : ''}}</div>
+                <div class="col-md-3">neg {{model.cardiovascular.isPositive ? '' : 'X'}}</div>
+            </div>
+            <div class="col-md-7">{{model.cardiovascular.notes}}</div>
+
+            <div class="col-md-5">
+                <div class="col-md-6">5. Respiratory</div>
+                <div class="col-md-3">pos {{model.respiratory.isPositive ? 'V' : ''}}</div>
+                <div class="col-md-3">neg {{model.respiratory.isPositive ? '' : 'X'}}</div>
+            </div>
+            <div class="col-md-7">{{model.respiratory.notes}}</div>
+
+            <div class="col-md-5">
+                <div class="col-md-6">6. Gastrointestinal</div>
+                <div class="col-md-3">pos {{model.gastrointestinal.isPositive ? 'V' : ''}}</div>
+                <div class="col-md-3">neg {{model.gastrointestinal.isPositive ? '' : 'X'}}</div>
+            </div>
+            <div class="col-md-7">{{model.gastrointestinal.notes}}</div>
+
+            <div class="col-md-5">
+                <div class="col-md-6">7. Genitourinary</div>
+                <div class="col-md-3">pos {{model.genitourinary.isPositive ? 'V' : ''}}</div>
+                <div class="col-md-3">neg {{model.genitourinary.isPositive ? '' : 'X'}}</div>
+            </div>
+            <div class="col-md-7">{{model.genitourinary.notes}}</div>
+
+            <div class="col-md-5">
+                <div class="col-md-6">8. Muscular</div>
+                <div class="col-md-3">pos {{model.muscular.isPositive ? 'V' : ''}}</div>
+                <div class="col-md-3">neg {{model.muscular.isPositive ? '' : 'X'}}</div>
+            </div>
+            <div class="col-md-7">{{model.muscular.notes}}</div>
+
+            <div class="col-md-5">
+                <div class="col-md-6">9. Integumentary</div>
+                <div class="col-md-3">pos {{model.integumentary.isPositive ? 'V' : ''}}</div>
+                <div class="col-md-3">neg {{model.integumentary.isPositive ? '' : 'X'}}</div>
+            </div>
+            <div class="col-md-7">{{model.integumentary.notes}}</div>
+
+            <div class="col-md-5">
+                <div class="col-md-6">10. Neurological</div>
+                <div class="col-md-3">pos {{model.neurological.isPositive ? 'V' : ''}}</div>
+                <div class="col-md-3">neg {{model.neurological.isPositive ? '' : 'X'}}</div>
+            </div>
+            <div class="col-md-7">{{model.neurological.notes}}</div>
+
+            <div class="col-md-5">
+                <div class="col-md-6">11. Endocrine</div>
+                <div class="col-md-3">pos {{model.endocrine.isPositive ? 'V' : ''}}</div>
+                <div class="col-md-3">neg {{model.endocrine.isPositive ? '' : 'X'}}</div>
+            </div>
+            <div class="col-md-7">{{model.endocrine.notes}}</div>
+
+            <div class="col-md-5">
+                <div class="col-md-6">12. Hemotologic/Lymphatic</div>
+                <div class="col-md-3">pos {{model.hemotologic.isPositive ? 'V' : ''}}</div>
+                <div class="col-md-3">neg {{model.hemotologic.isPositive ? '' : 'X'}}</div>
+            </div>
+            <div class="col-md-7">{{model.hemotologic.notes}}</div>
+
+            <div class="col-md-5">
+                <div class="col-md-6">13. Allergies/Immune</div>
+                <div class="col-md-3">pos {{model.allergies.isPositive ? 'V' : ''}}</div>
+                <div class="col-md-3">neg {{model.allergies.isPositive ? '' : 'X'}}</div>
+            </div>
+            <div class="col-md-7">{{model.allergies.notes}}</div>
+        </div>
+    </div>
+    <div class="container border">
+        <div class="row gray text-center">
+            PSYCHIATRIC SPECIALTY EXAMINATION
+        </div>
+        <div class="row text-center">
+            (1-5 bullets- Problem Focused; at least 6 bullets Expanded Problem Focused; at least 9 bullets - Detailed; all bullets- Comprehensive Exam)
+        </div>
+        <div class="row  text-center">
+            Patient personally examined: {{model.isExamined ? "V" : ""}} Yes {{model.isExamined ? "" : "X"}} No
+        </div>
+        <ul>
+            <li>
+                Vital Signs (any 3 or more of the 7 listed):
+                Blood Pressure: (Sitting/Standing) __{{model.blood_Pressure_Sitting}} / {{model.blood_Pressure_Standing}}__ (Supine) __{{model.supine}}_
+                Temp_{{model.temp}}_ Pulse (Rate/Regularity) __{{model.pulse_Rate}} / {{model.pulse_Regularity}}__ Respiration __{{model.respiration}}__Height _{{model.height}}_ Weight _{{model.weight}}__
+            </li>
+            <li>
+                General Appearance and Manner: (e.g., development, nutrition, body habitus, deformities, attention to grooming)
+                {{model.description_Of_Associations}}
+            </li>
+            <li>
+                Musculoskeletal: {{model.assessment}}_Assessment of muscle strength and tone (e.g., flaccid, cog wheel, spastic) (note any atrophy or abnormal
+                movements)
+                {{model.musculoskeletal}}
+                (and/or) {{model.examination_Of_Gait}}Examination of gait and station
+            </li>
+            <li>
+                Speech: Check if normal:{{model.rate}}__rate_{{model.volume}}_volume_{{model.articulation}}_articulation_{{model.coherence}}_coherence_{{model.spontaneity}}_spontaneity (note abnormalities; e.g., perseveration,
+                paucity of language)
+            </li>
+            <li>
+                Thought processes: Check if normal: _{{model.associations}}_associations_{{model.processes}}_processes_{{model.abstraction}}_abstraction _{{model.computation}}_computation
+            </li>
+            <li>
+                Description of associations (e.g., loose, tangential, circumstantial, intact):
+                {{model.description_Of_Associations}}
+            </li>
+            <li>
+                Description of abnormal or psychotic thoughts (e.g., hallucinations, delusions, preoccupation with violence, homicidal or suicidal
+                ideation, obsessions):
+                {{model.description_Of_Psychotic_Thoughts}}
+
+                Suicidal ideation: _{{model.isSuicidalIdeation}}_ Present__ Absent Homicidal ideation: _{{model.isHomicidalIdeation}}_Present __ Absent Violent ideation: _{{model.isViolentIdeation}}_Present __ Absent
+            </li>
+            <li>
+                Description of patient’s judgment and insight:
+                {{model.description_Of_Patient_Judgment}}
+            </li>
+            <li>
+                Orientation: {{model.Orientation}}
+            </li>
+            <li>
+                Memory (Recent/Remote): {{model.memory}}
+            </li>
+            <li>
+                Attention/Concentration: {{model.concentration}}
+            </li>
+            <li>
+                Language: {{model.language}}
+            </li> 
+            <li>
+                Fund of knowledge: _{{model.isIntact}}_intact _{{model.isInadequate}}_inadequate
+            </li>
+            <li>
+                Mood and affect: {{model.mood}}
+            </li>
+            <li>
+                Other Findings (e.g. cognitive screens, etc.): {{model.other}}
+            </li>
+        </ul>
+    </div>
+    <div class="container border">
+        <div class="row gray text-center">
+            MEDICAL DECISION MAKING
+        </div>
+        <div class="row">
+            <div class="col-md-6 gray text-center"><b>Diagnoses</b></div>
+            <div class="col-md-6 gray text-center"><b>Data</b></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <!--Axis I-V:-->
+                Rule outs: {{model.rule_Outs}}
+                Formulation {{model.formulation}}
+            </div>
+            <div class="col-md-6">Medical Records/Labs/Diagnostic Tests Reviewed {{model.tests_Reviewed}}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 gray text-center"><b>Problem/Condition</b></div>
+            <div class="col-md-6 gray text-center"><b>Treatment Plan</b></div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                Problem/Condition: _{{model.isNew}}_New ___Established
+                Status: _{{model.isImproving}}_Improving ___Worsening
+                Comorbidities:
+                __{{model.isStable}}_Stable
+                __{{model.isComplicated}}_Complications/side effects
+                __{{model.isIndependent}}_Independent management required
+                __{{model.interface_With_Management}}_Interference with management of primary condition(s)
+            </div>
+            <div class="col-md-6">
+                Intervention/Psychotherapy {{model.intervention}}
+                Medication {{model.medication}}
+                Labs/Radiology/Tests/Consultation {{model.consultation}}
+                Other {{model.treatment_Other}}
+            </div>
+        </div>
+    </div>
+    <div class="container border">
+        _{{model.isGreaterThanFifty}}_Greater than 50% of time spent in counseling/coordination of care (document)
+        {{model.greaterThanFifty_Content}}
+    </div>
+</div>
+

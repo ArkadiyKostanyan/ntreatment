@@ -9,6 +9,8 @@ namespace DataAccess.Manager
     {
         private const string fileName = "model.json";
 
+        private const string fileName2 = "modelDSM.json";
+
         public TemplateModel Get()
         {
             if (!File.Exists(FilePath()))
@@ -32,8 +34,22 @@ namespace DataAccess.Manager
             File.WriteAllText(FilePath(), json);
         }
 
-        private string FilePath()
+        public void SaveDSM(object model)
         {
+            string json = DataSerializer.Serialize(model);
+            if (!File.Exists(FilePath(true)))
+            {
+                File.Create(FilePath(true)).Close();
+            }
+            File.WriteAllText(FilePath(true), json);
+        }
+
+        private string FilePath(bool isDSDM = false)
+        {
+            if(isDSDM)
+            {
+                return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName2);
+            }
             return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
         }
     }
