@@ -9,7 +9,7 @@ namespace DataAccess.Manager
     {
         private const string fileName = "model.json";
 
-        private const string fileName2 = "modelDSM.json";
+        private const string fileName2 = "modelPID.json";
 
         public TemplateModel Get()
         {
@@ -34,7 +34,7 @@ namespace DataAccess.Manager
             File.WriteAllText(FilePath(), json);
         }
 
-        public void SaveDSM(object model)
+        public void SavePID(object model)
         {
             string json = DataSerializer.Serialize(model);
             if (!File.Exists(FilePath(true)))
@@ -44,9 +44,9 @@ namespace DataAccess.Manager
             File.WriteAllText(FilePath(true), json);
         }
 
-        private string FilePath(bool isDSDM = false)
+        private string FilePath(bool isPID = false)
         {
-            if(isDSDM)
+            if(isPID)
             {
                 return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName2);
             }

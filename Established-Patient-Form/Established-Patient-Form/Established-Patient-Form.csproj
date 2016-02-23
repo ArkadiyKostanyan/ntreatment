@@ -172,7 +172,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="partials\DSM-5.html" />
+    <Content Include="partials\PID-5.html" />
     <Content Include="partials\Edit.html" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

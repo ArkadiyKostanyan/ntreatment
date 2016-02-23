@@ -1,8 +1,8 @@
-﻿app.directive("dsm", function () {
+﻿app.directive("PID", function () {
 
     return {
         restrict: 'E',
-        templateUrl: "/partials/DSM-5.html",
+        templateUrl: "/partials/PID-5.html",
         scope: {
             User: '=user'
         },
@@ -79,7 +79,7 @@
             });
 
             $scope.saveDSMTemplate = function () {
-                $http.post("/api/main/saveDSM", $scope.model)
+                $http.post("/api/main/savePID", $scope.model)
                 .then(function (response) {
                     $scope.message = response.data.substr(1, response.data.length - 2);
                     alert("DSM Template have been saved.")

@@ -36,13 +36,13 @@ namespace Established_Patient_Form.Controllers
         }
 
         [HttpPost]
-        [Route("SaveDSM")]
-        public IHttpActionResult SaveDSM(object model)
+        [Route("SavePID")]
+        public IHttpActionResult SavePID(object model)
         {
             if (model != null)
             {
-                dManager.SaveDSM(model);
-                return Ok("DSM Template have been saved");
+                dManager.SavePID(model);
+                return Ok("PID Template have been saved");
             }
             return BadRequest(ModelState);
         }
