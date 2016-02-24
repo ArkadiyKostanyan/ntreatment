@@ -1,340 +1,325 @@
-﻿<div  layout-sm="rows" ng-cloak>
+﻿<div layout-sm="rows" ng-cloak>
     <div layout-sm="rows" layout="row">
-        <div flex="50" layout="row" layout-align="center"><b>User:</b>&nbsp; {{User.Name}}</div>
-        <div flex="50" layout="row" layout-align="center"><b>User Id:</b>&nbsp; {{User.Id}}</div>
-    </div>
-    <div layout-sm="rows" layout="row">
-        <div flex="90" layout="row"><b>Instructions:</b> This is a list of things different people might say about themselves. We are interested in how you would describe yourself. There are no right or wrong answers. So you can describe yourself as honestly as possible, we will keep your responses confidential. We’d like you to take your time and read each statement carefully, selecting the response that best describes you.</div>
-        <div flex="10" layout="row"><b>Clinician Use</b></div>
-    </div>
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout="row"></div>
-        <div flex="35" layout="row"></div>
-        <div flex="10" layout="row" layout-padding><b>Very False or Often False</b></div>
-        <div flex="15" layout="row" layout-padding><b>Sometimes or Somewhat False</b></div>
-        <div flex="15" layout="row" layout-padding><b>Sometimes or Somewhat True</b></div>
-        <div flex="10" layout="row" layout-padding><b>Very True or Often True</b></div>
-        <div flex="10" layout="row" layout-padding><b>Item score</b></div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5"  layout-align="center" layout="row" layout-padding>1</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>People would describe me as reckless.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" layout-align="center center"  ng-model="model.Reckless" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25"   layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.Reckless}}</div>
-    </div>
-    
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>2</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>I feel like I act totally on impulse.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.OnImpulse" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25"    ng-value="n" aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.OnImpulse}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>3</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>Even though I know better, I can’t stop making rash decisions.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.RashDecisions" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25"    ng-value="n" aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.RashDecisions}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>4</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>I often feel like nothing I do really matters.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.NothingIDo" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"    aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.NothingIDo}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>5</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>Others see me as irresponsible.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.Irresponsible" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"    aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.Irresponsible}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>6</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>I’m not good at planning ahead.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.PlanningAhead" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25"  ng-value="n" aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.PlanningAhead}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>7</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>My thoughts often don’t make sense to others.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.Thoughts" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25"  ng-value="n" aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.Thoughts}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>8</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>I worry about almost everything.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.WorryEverything" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25"  ng-value="n" aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.WorryEverything}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>9</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>I get emotional easily, often for very little reason.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.EmotionalEasily" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25"  ng-value="n" aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.EmotionalEasily}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>10</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>I fear being alone in life more than anything else.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.FearBeingAlone" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.FearBeingAlone}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>11</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>I get stuck on one way of doing things, even when it’s clear it won’t work.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.GetStuckOnOneWay" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.GetStuckOnOneWay}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>12</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>I have seen things that weren’t really there.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.ThingsThatNotReally" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.ThingsThatNotReally}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>13</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>I steer clear of romantic relationships.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.RomanticRelationships" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.RomanticRelationships}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>14</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>I’m not interested in making friends.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.MakingFriends" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.MakingFriends}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>15</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>I get irritated easily by all sorts of things.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.IrritatedEasily" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.IrritatedEasily}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>16</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>I don’t like to get too close to people.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.CloseToPeople" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.CloseToPeople}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>17</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>It’s no big deal if I hurt other peoples’ feelings.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.HurtOther" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.HurtOther}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>18</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>I rarely get enthusiastic about anything.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.Enthusiastic" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.Enthusiastic}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>19</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>I crave attention.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.CraveAttention" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.CraveAttention}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>20</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>I often have to deal with people who are less important than me.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.DealLessImportant" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.DealLessImportant}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>21</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>I often have thoughts that make sense to me but that other people say are strange.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.ThoughtsMakeSense" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.ThoughtsMakeSense}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>22</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>I use people to get what I want.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.GetWhatIWant" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n"  aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.GetWhatIWant}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>23</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>I often “zone out” and then suddenly come to and realize that a lot of time has passed.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.ZoneOut" data-ng-change="CalculateData()" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n" aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.ZoneOut}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>24</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>Things around me often feel unreal, or more real than usual.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.ThingsUnreal" layout-align="center" data-ng-change="CalculateData()" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n" aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.ThingsUnreal}}</div>
-    </div>
-
-    <div layout-sm="rows" flex layout="row">
-        <div flex="5" layout-align="center" layout="row" layout-padding>25</div>
-        <div flex="35" layout-align="start center" layout="row" layout-padding>It is easy for me to take advantage of others.</div>
-        <div flex="60" layout="row">
-            <md-radio-group md-no-ink class="md-primary" ng-model="model.TakeAdvantage" data-ng-keyup="CalculateData()" layout-align="center" flex="100" layout="row">
-                <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" ng-value="n" aria-label="{{ n }}"></md-radio-button>
-            </md-radio-group>
-        </div>
-        <div flex="10" layout="row" layout-align="center center">{{model.TakeAdvantage}}</div>
-    </div>
-
-    <div layout-sm="rows" layout="row">
-        <div flex="90" layout-align="end center" layout="row" layout-padding>Total/Partial Raw Score:</div>
-        <div flex="10" layout="row" layout-align="center center">{{model.TotalScore}}</div>
-    </div>
-    <div layout-sm="rows" layout="row">
-        <div flex="90" layout-align="end center" layout="row" layout-padding>Prorated Total Score: (if 1-6 items left unanswered)</div>
-        <div flex="10" layout="row" layout-align="center center">{{model.ProratedTotalScore}}</div>
-    </div>
-    <div layout-sm="rows" layout="row">
-        <div flex="90" layout-align="end center" layout="row" layout-padding>Average Total Score:</div>
-        <div flex="10" layout="row" layout-align="center center">{{model.AvarageTotalScore}}</div>
+        <div flex="33" layout="row" layout-align="center"><b>User:</b>&nbsp; {{User.Name}}</div>
+        <div flex="33" layout="row" layout-align="center"><b>User Id:</b>&nbsp; {{User.Id}}</div>
+        <div flex="33" layout="row" layout-align="center"><b>Date:</b>&nbsp; {{User.Date | date:'medium'}}</div>
     </div>
 </div>
+    <div class="table-responsive-vertical shadow-z-1">
+        <!-- Table starts here -->
+        <table id="table" class="table-bordered table table-hover table-mc-light-blue table-striped">
+            <thead>
+                <tr>
+                    <th colspan="6"><b>Instructions:</b> This is a list of things different people might say about themselves. We are interested in how you would describe yourself. There are no right or wrong answers. So you can describe yourself as honestly as possible, we will keep your responses confidential. We’d like you to take your time and read each statement carefully, selecting the response that best describes you.</th>
+                    <th class="text-center"><span><b>Clinician Use</b></span></th>
+                </tr>
+                <tr>
+                    <th width="2%"></th>
+                    <th></th>
+                    <th width="11%" class="text-center"><b>Very False or Often False</b></th>
+                    <th width="11%" class="text-center"><b>Sometimes or Somewhat False</b></th>
+                    <th width="11%" class="text-center"><b>Sometimes or Somewhat True</b></th>
+                    <th width="11%" class="text-center"><b>Very True or Often True</b></th>
+                    <th width="5%" class="text-center"><b>Item score</b></th>
+                </tr>
+            </thead>
 
-<section layout="row" layout-sm="column" flex="100" layout-align="center center" layout-wrap>
-    <md-button class="md-raised md-warn" data-ng-click="saveDSMTemplate()">Save</md-button>
-</section>
+            <tbody>
 
-<!--<table width="100%">
-    <thead>
-        <tr>
-            <th></th>
-            <th></th>
-            <th>Very False or Often False</th>
-            <th>Sometimes or Somewhat False</th>
-            <th>Sometimes or Somewhat True</th>
-            <th>Very True or Often True</th>
-            <th>Item score</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>People would describe me as reckless.</td>
-            <td colspan="4">
-                <md-radio-group md-no-ink class="md-primary" ng-model="model.People" layout="row">
-                    <md-radio-button ng-value="0" ayout-align="center" flex="20"></md-radio-button>
-                    <md-radio-button ng-value="1" ayout-align="center" flex="30"></md-radio-button>
-                    <md-radio-button ng-value="2" ayout-align="center" flex="30"></md-radio-button>
-                    <md-radio-button ng-value="3" ayout-align="center" flex="20"></md-radio-button>
-                </md-radio-group>
-            </td>
-            <td>{{model.People}}</td>
-        </tr>
-    </tbody>
-</table>-->
+                <tr>
+                    <td class="text-center" data-title="Number">1</td>
+                    <td data-title="Name">People would describe me as reckless.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group ng-change="Check('{{model.Reckless}}' == '')" ng-dblclick="model.Reckless = null; Cleare();" class="md-primary" layout-align="center" ng-model="model.Reckless" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.Reckless}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">2</td>
+                    <td data-title="Name">I feel like I act totally on impulse.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group ng-change="Check('{{model.OnImpulse}}' == '')" ng-dblclick="model.OnImpulse = null; Cleare();" class="md-primary" layout-align="center" ng-model="model.OnImpulse" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.OnImpulse}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">3</td>
+                    <td data-title="Name">Even though I know better, I can’t stop making rash decisions.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group ng-change="Check('{{model.RashDecisions}}' == '')" ng-dblclick="model.RashDecisions = null; Cleare();" class="md-primary" layout-align="center" ng-model="model.RashDecisions" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.RashDecisions}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">4</td>
+                    <td data-title="Name">I often feel like nothing I do really matters.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group ng-change="Check('{{model.NothingIDo}}' == '')" ng-dblclick="model.NothingIDo = null; Cleare();" class="md-primary" layout-align="center" ng-model="model.NothingIDo" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.NothingIDo}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">5</td>
+                    <td data-title="Name">Others see me as irresponsible.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group ng-change="Check('{{model.Irresponsible}}' == '')" ng-dblclick="model.Irresponsible = null; Cleare();" class="md-primary" layout-align="center" ng-model="model.Irresponsible" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.Irresponsible}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">6</td>
+                    <td data-title="Name">I’m not good at planning ahead.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group ng-change="Check('{{model.PlanningAhead}}' == '')" ng-dblclick="model.PlanningAhead = null; Cleare();" class="md-primary" layout-align="center" ng-model="model.PlanningAhead" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.PlanningAhead}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">7</td>
+                    <td data-title="Name">My thoughts often don’t make sense to others.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group ng-change="Check('{{model.Thoughts}}' == '')" ng-dblclick="model.Thoughts = null; Cleare();" class="md-primary" layout-align="center" ng-model="model.Thoughts" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.Thoughts}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">8</td>
+                    <td data-title="Name">I worry about almost everything.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group ng-change="Check('{{model.WorryEverything}}' == '')" ng-dblclick="model.WorryEverything = null; Cleare();" class="md-primary" layout-align="center" ng-model="model.WorryEverything" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.WorryEverything}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">9</td>
+                    <td data-title="Name">I get emotional easily, often for very little reason.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group ng-change="Check('{{model.EmotionalEasily}}' == '')" ng-dblclick="model.EmotionalEasily = null; Cleare();" class="md-primary" layout-align="center" ng-model="model.EmotionalEasily" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.EmotionalEasily}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">10</td>
+                    <td data-title="Name">I fear being alone in life more than anything else.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group ng-change="Check('{{model.FearBeingAlone}}' == '')" ng-dblclick="model.FearBeingAlone = null; Cleare();" class="md-primary" layout-align="center" ng-model="model.FearBeingAlone" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.FearBeingAlone}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">11</td>
+                    <td data-title="Name">I get stuck on one way of doing things, even when it’s clear it won’t work.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group ng-change="Check('{{model.GetStuckOnOneWay}}' == '')" ng-dblclick="model.GetStuckOnOneWay = null; Cleare();" class="md-primary" layout-align="center" ng-model="model.GetStuckOnOneWay" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.GetStuckOnOneWay}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">12</td>
+                    <td data-title="Name">I have seen things that weren’t really there.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group ng-change="Check('{{model.ThingsThatNotReally}}' == '')" ng-dblclick="model.ThingsThatNotReally = null; Cleare();" class="md-primary" layout-align="center" ng-model="model.ThingsThatNotReally" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.ThingsThatNotReally}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">13</td>
+                    <td data-title="Name">I steer clear of romantic relationships.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group ng-change="Check('{{model.RomanticRelationships}}' == '')" ng-dblclick="model.RomanticRelationships = null; Cleare();" class="md-primary" layout-align="center" ng-model="model.RomanticRelationships" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.RomanticRelationships}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">14</td>
+                    <td data-title="Name">I’m not interested in making friends.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group ng-change="Check('{{model.MakingFriends}}' == '')" ng-dblclick="model.MakingFriends = null; Cleare();" class="md-primary" layout-align="center" ng-model="model.MakingFriends" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.MakingFriends}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">15</td>
+                    <td data-title="Name">I get irritated easily by all sorts of things.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group ng-change="Check('{{model.IrritatedEasily}}' == '')" ng-dblclick="model.IrritatedEasily = null; Cleare();" class="md-primary" layout-align="center" ng-model="model.IrritatedEasily" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.IrritatedEasily}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">16</td>
+                    <td data-title="Name">I don’t like to get too close to people.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group ng-change="Check('{{model.CloseToPeople}}' == '')" ng-dblclick="model.CloseToPeople = null; Cleare();" class="md-primary" layout-align="center" ng-model="model.CloseToPeople" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.CloseToPeople}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">17</td>
+                    <td data-title="Name">It’s no big deal if I hurt other peoples’ feelings.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group ng-change="Check('{{model.HurtOther}}' == '')" ng-dblclick="model.HurtOther = null; Cleare();" class="md-primary" layout-align="center" ng-model="model.HurtOther" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.HurtOther}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">18</td>
+                    <td data-title="Name">I rarely get enthusiastic about anything.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group ng-change="Check('{{model.Enthusiastic}}' == '')" ng-dblclick="model.Enthusiastic = null; Cleare();" class="md-primary" layout-align="center" ng-model="model.Enthusiastic" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.Enthusiastic}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">19</td>
+                    <td data-title="Name">I crave attention.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group class="md-primary" layout-align="center" ng-model="model.CraveAttention" ng-change="Check('{{model.CraveAttention}}' == '')" ng-dblclick="model.CraveAttention = null; Cleare();" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.CraveAttention}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">20</td>
+                    <td data-title="Name">I often have to deal with people who are less important than me.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group class="md-primary" layout-align="center" ng-model="model.DealLessImportant" ng-change="Check('{{model.DealLessImportant}}' == '')" ng-dblclick="model.DealLessImportant = null; Cleare();" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.DealLessImportant}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">21</td>
+                    <td data-title="Name">I often have thoughts that make sense to me but that other people say are strange.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group class="md-primary" layout-align="center" ng-model="model.ThoughtsMakeSense" ng-change="Check('{{model.ThoughtsMakeSense}}' == '')" ng-dblclick="model.ThoughtsMakeSense = null; Cleare();" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.ThoughtsMakeSense}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">22</td>
+                    <td data-title="Name">I use people to get what I want.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group class="md-primary" layout-align="center" ng-model="model.GetWhatIWant" ng-change="Check('{{model.GetWhatIWant}}' == '')" ng-dblclick="model.GetWhatIWant = null; Cleare();" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.GetWhatIWant}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">23</td>
+                    <td data-title="Name">I often “zone out” and then suddenly come to and realize that a lot of time has passed.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group class="md-primary" layout-align="center" ng-model="model.ZoneOut" flex="100" ng-change="Check('{{model.ZoneOut}}' == '')" ng-dblclick="model.ZoneOut = null; Cleare();" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.ZoneOut}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">24</td>
+                    <td data-title="Name">Things around me often feel unreal, or more real than usual.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group class="md-primary" layout-align="center" ng-model="model.ThingsUnreal" ng-change="Check('{{model.ThingsUnreal}}' == '')" ng-dblclick="model.ThingsUnreal = null;  Cleare();" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.ThingsUnreal}}</td>
+                </tr>
+
+                <tr>
+                    <td class="text-center" data-title="Number">25</td>
+                    <td data-title="Name">It is easy for me to take advantage of others.</td>
+                    <td colspan="4" data-title="Value">
+                        <md-radio-group class="md-primary" layout-align="center" ng-model="model.TakeAdvantage" ng-change="Check('{{model.TakeAdvantage}}' == '')" ng-dblclick="model.TakeAdvantage = null; Cleare();" flex="100" layout="row">
+                            <md-radio-button ng-repeat="n in [0, 1, 2, 3] track by $index" flex="25" layout="row" layout-align="center center" ng-value="n" aria-label="{{ n }}"></md-radio-button>
+                        </md-radio-group>
+                    </td>
+                    <td class="text-center" data-title="Result">{{model.TakeAdvantage}}</td>
+                </tr>
+            </tbody>
+
+            <tfoot>
+                <tr>
+                    <td style="text-align:right" colspan="6">Total/Partial Raw Score:</td>
+                    <td class="text-center">{{model.TotalScore}}</td>
+                </tr>
+                <tr>
+                    <td style="text-align:right" colspan="6">Prorated Total Score: (if 1-6 items left unanswered)</td>
+                    <td class="text-center">{{model.ProratedTotalScore | number:2}}</td>
+                </tr>
+                <tr>
+                    <td style="text-align:right" colspan="6">Average Total Score:</td>
+                    <td class="text-center">{{model.AvarageTotalScore}}</td>
+                </tr>
+                <tr>
+                    <td style="text-align:center" colspan="7">
+                        <md-button class="md-raised md-warn" data-ng-click="savePIDTemplate()">Save</md-button>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>

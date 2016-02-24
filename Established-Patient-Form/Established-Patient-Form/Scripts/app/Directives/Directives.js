@@ -1,4 +1,4 @@
-﻿app.directive("PID", function () {
+﻿app.directive("pid", function () {
 
     return {
         restrict: 'E',
@@ -7,6 +7,9 @@
             User: '=user'
         },
         controller: function ($http, $scope) {
+
+            $scope.checkedCount = 0;
+
             $scope.model = {
                 Reckless: null,
                 OnImpulse : null,
@@ -32,7 +35,10 @@
                 GetWhatIWant: null,
                 ZoneOut: null,
                 ThingsUnreal: null,
-                TakeAdvantage: null
+                TakeAdvantage: null,
+                AvarageTotalScore: null,
+                TotalScore: null,
+                ProratedTotalScore:null
             };
 
             $scope.AvarageTotalScore = function () {
@@ -40,7 +46,13 @@
             }
 
             $scope.ProratedTotalScore = function () {
-                $scope.model.ProratedTotalScore = 0;
+                if($scope.checkedCount <= 0)
+                {
+                    $scope.model.ProratedTotalScore = null;
+                }
+                else{
+                    $scope.model.ProratedTotalScore = $scope.model.TotalScore * 25 / $scope.checkedCount;
+                }
             }
 
             $scope.TotalScore = function () {
@@ -72,17 +84,30 @@
                     $scope.model.TakeAdvantage;
             }
 
-            $scope.$watchCollection('model', function () {
+
+            $scope.$watchCollection('model', function (item) {
                 $scope.AvarageTotalScore();
-                $scope.ProratedTotalScore();
                 $scope.TotalScore();
+                $scope.ProratedTotalScore();
             });
 
-            $scope.saveDSMTemplate = function () {
+            $scope.Check = function (isEmpty)
+            {
+                if(isEmpty)
+                {
+                    $scope.checkedCount = $scope.checkedCount + 1;
+                }
+            }
+
+            $scope.Cleare = function () {
+                $scope.checkedCount = $scope.checkedCount - 1;
+            }
+
+            $scope.savePIDTemplate = function () {
                 $http.post("/api/main/savePID", $scope.model)
                 .then(function (response) {
                     $scope.message = response.data.substr(1, response.data.length - 2);
-                    alert("DSM Template have been saved.")
+                    alert("PID Template have been saved.")
                 }, function (response) {
                     var errors = [];
                     for (var key in response.data.modelState) {

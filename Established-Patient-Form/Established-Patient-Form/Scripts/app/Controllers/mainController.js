@@ -3,7 +3,8 @@
     $scope.model = {};
     $scope.user = {
         Name: 'Denis Ryabukha',
-        Id: '0000-0000-0000-0001'
+        Id: '0000-0000-0000-0001',
+        Date: new Date()
     }
     $scope.isPreview = false;
     $scope.showHtml = false;
